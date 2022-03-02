@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: yanki
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8888
+      username: nttdata
+      password: nttd4t4
+  
+  
