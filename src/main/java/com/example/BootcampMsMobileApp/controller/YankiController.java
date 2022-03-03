@@ -18,27 +18,34 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/yanki")
 public class YankiController {
-  private final YankiService service;
+	private final YankiService service;
 
 
-  @GetMapping()
-  public Flux<Yanki> findAll() {
-    return service.findAll();
-  }
-  @GetMapping("/{key}")
-  public Mono<Yanki> findByKey(@PathVariable("key") String key) {
-      return service.findByKey(key);
-  }
-  @PostMapping("/{key}")
-    public Mono<Boolean> save(@PathVariable("key") String key, @RequestBody Yanki yanki) {
-        return  service.save(key, yanki);
-       
+	@GetMapping()
+	public Flux<Yanki> findAll() {
+		return service.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Mono<Yanki> findById(@PathVariable("key") String key) {
+		return service.findById(key);
+	}
+	
+	@PostMapping
+	public Mono<Yanki> save(@RequestBody Yanki yanki) {
+		return  service.save(yanki);
+	}
+	
+	@DeleteMapping("/{id}")
+    public void delete(@PathVariable("id")String id) {
+        service.delete(id);
     }
-  @DeleteMapping("/{key}")
-    public Mono<Boolean> delete(String key) {
-        return service.delete(key);
-    }
-
-  
+	
+	@PostMapping("sendTo/{phoneNumberTo}/{amount}")
+	public Mono<Yanki> sendMony(@PathVariable("phoneNumberTo") String phoneNumberTo,
+								@RequestBody Yanki yanki,
+								@PathVariable("amount") Double amount){
+		return service.sendPayments(yanki, phoneNumberTo, amount);
+	}
 
 }

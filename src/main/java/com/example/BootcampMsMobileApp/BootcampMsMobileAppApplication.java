@@ -13,6 +13,4 @@ public class BootcampMsMobileAppApplication {
 		SpringApplication.run(BootcampMsMobileAppApplication.class, args);
 	}
 
-  
-
 }

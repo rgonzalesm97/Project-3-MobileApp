@@ -1,9 +1,7 @@
 package com.example.BootcampMsMobileApp.model;
 
 
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,16 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document("yanki")
-public class Yanki{
+public class MessageDto{
 
-	@Id
-    String id;
-    String documentNumber;
-    String phoneNumber;
-    String phoneIMEI;
-    String email;
-    String cardNumber;
-    Double balance;
-
+	String message;
+	String phoneNumber;
+	Double amount;
 }

@@ -13,8 +13,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class RedisConfiguration {
+	
     @Bean
     ReactiveRedisOperations<String, Yanki> redisOperations(ReactiveRedisConnectionFactory factory) {
+    	
     Jackson2JsonRedisSerializer<Yanki> serializer = new Jackson2JsonRedisSerializer<>(Yanki.class);
 
     RedisSerializationContext.RedisSerializationContextBuilder<String, Yanki> builder =
